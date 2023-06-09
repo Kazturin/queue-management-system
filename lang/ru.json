@@ -1,0 +1,16 @@
+{
+    "User": "Пользователь",
+    "Users": "Пользователи",
+    "Services": "Услуги",
+    "Service": "Услуга",
+    "Tickets": "Талоны",
+    "Name": "Имя",
+    "Fullname": "ФИО",
+    "Roles": "Роль",
+    "Number": "Номер",
+    "Created At": "Добавлен",
+    "Updated At": "Изменен",
+    "Password": "Пароль",
+    "Abbreviation": "Аббревиатура",
+    "Assignment of Service to Operator": "Назначение услуги оператору"
+}
