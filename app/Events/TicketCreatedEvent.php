@@ -29,7 +29,8 @@ class TicketCreatedEvent implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return new Channel('public.ticket.created');
+      //  return new Channel('public.ticket.created');
+        return new PrivateChannel('private.ticket.created');
       //      new Channel('public.test.1'),
     }
 
@@ -38,14 +39,14 @@ class TicketCreatedEvent implements ShouldBroadcast
         return 'ticketCreated';
     }
 
-    public function broadcastWhen()
-    {
-        $allowServicesIds = OperatorService::where('operator_id',auth()->user()->id)->pluck('service_id')->toArray();
-       // dd($allowServicesIds);
-        return in_array($this->ticket->service_id,$allowServicesIds);
-    }
+//    public function broadcastWhen()
+//    {
+//        $allowServicesIds = OperatorService::where('operator_id',auth()->user()->id)->pluck('service_id')->toArray();
+//       // dd($allowServicesIds);
+//        return in_array($this->ticket->service_id,$allowServicesIds);
+//    }
 
 //    public function broadcastWith(){
-//        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)->with('operator')->orderBy('updated_at','desc')->get()->toArray();
+//        return $this->ticket;
 //    }
 }

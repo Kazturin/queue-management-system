@@ -21,16 +21,9 @@ class SiteController extends Controller
 {
     public function services(){
 
-        $user = User::first();
-
-       $query = User::whereHas(
-            'roles', function($q){
-            $q->where('name', 'Operator');
-        }
-        )->with('tickets')->get();
-
-       dd($query[0]->tickets);
-
+//        $user = User::find(11);
+//
+//        dd($user->services->pluck('id')->contains(6));
 
         $services = Service::all();
 
@@ -49,7 +42,7 @@ class SiteController extends Controller
         ]);
 
         TicketCreatedEvent::dispatch($ticket);
-       // event(TicketCreatedEvent::class);
+     //   event(new TicketCreatedEvent($ticket));
 
         return redirect()->route('ticket', ['key'=>$ticket->key]);
     }

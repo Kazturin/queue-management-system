@@ -63,13 +63,15 @@
     @push('scripts')
         @vite('resources/js/pusher.js')
         <script type="module">
+            var allowIds = @json($allowServicesIds);
+            const channel = Echo.private('private.ticket.created');
 
-            const channel = Echo.channel('public.ticket.created');
             channel.subscribed(()=>{
                 console.log('subscribed channel')
             }).listen('.ticketCreated',(event)=>{
-                console.log('ok');
-                Livewire.emit('recordUpdated');
+                if (allowIds.includes(event.ticket.service_id)){
+                    Livewire.emit('recordUpdated');
+                }
             });
         </script>
 

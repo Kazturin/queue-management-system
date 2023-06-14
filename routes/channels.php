@@ -21,4 +21,7 @@ use Illuminate\Support\Facades\Broadcast;
 //    $allowServicesIds = OperatorService::where('operator_id',$user->id)->pluck('service_id');
 //    return in_array($ticket->services_id,$allowServicesIds);
 //});
+Broadcast::channel('private.ticket.created', function ($user) {
+    return !is_null($user);
+});
 

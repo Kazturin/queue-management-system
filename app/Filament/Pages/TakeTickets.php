@@ -60,7 +60,7 @@ class TakeTickets extends Page
     }
 
     public function mount(){
-        $this->allowServicesIds = OperatorService::where('operator_id',auth()->user()->id)->pluck('service_id');
+        $this->allowServicesIds = auth()->user()->services->pluck('id');
         $this->test = 'tets';
         $this->tickets = Ticket::with('service')
             ->whereIn('service_id',$this->allowServicesIds)
