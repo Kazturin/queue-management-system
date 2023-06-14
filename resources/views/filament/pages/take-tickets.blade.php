@@ -65,7 +65,6 @@
         <script type="module">
 
             const channel = Echo.channel('public.ticket.created');
-
             channel.subscribed(()=>{
                 console.log('subscribed channel')
             }).listen('.ticketCreated',(event)=>{
@@ -73,7 +72,6 @@
                 Livewire.emit('recordUpdated');
             });
         </script>
-
 
     @endpush
 

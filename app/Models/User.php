@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Ramsey\Uuid\Uuid;
@@ -67,6 +68,10 @@ class User extends Authenticatable implements FilamentUser
 
     public function services(){
         return $this->belongsToMany(Service::class,'operator_services','operator_id','service_id');
+    }
+
+    public function tickets():HasMany{
+        return $this->hasMany(Ticket::class,'operator_id','id')->where('status', Ticket::STATUS_IN_PROGRESS);
     }
 
     public function canAccessFilament(): bool

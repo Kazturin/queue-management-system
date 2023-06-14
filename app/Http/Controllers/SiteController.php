@@ -21,6 +21,17 @@ class SiteController extends Controller
 {
     public function services(){
 
+        $user = User::first();
+
+       $query = User::whereHas(
+            'roles', function($q){
+            $q->where('name', 'Operator');
+        }
+        )->with('tickets')->get();
+
+       dd($query[0]->tickets);
+
+
         $services = Service::all();
 
         return view('site.services',compact('services'));
@@ -37,7 +48,8 @@ class SiteController extends Controller
             'key' => Str::random(20)
         ]);
 
-          TicketCreatedEvent::dispatch($ticket);
+        TicketCreatedEvent::dispatch($ticket);
+       // event(TicketCreatedEvent::class);
 
         return redirect()->route('ticket', ['key'=>$ticket->key]);
     }
@@ -55,21 +67,9 @@ class SiteController extends Controller
 
     public function display(){
 
-        $test = Ticket::where('status',Ticket::STATUS_IN_PROGRESS)->with('operator')->orderBy('updated_at','desc')->limit(10)->get()->toArray();
+        $data = Ticket::where('status',Ticket::STATUS_IN_PROGRESS)->with('operator')->orderBy('updated_at','desc')->limit(10)->get()->toArray();
 
-      //  dd($test);
-//        User::create([
-//            'name' => 'Bob',
-//            'email' => 'bob@test.test',
-//            'password' => bcrypt('testtest'),
-//            'number' => 3
-//        ]);
-
-      //  dd(User::find(1)->hasRole('Admin'));
-
-        $tickets = Ticket::where('status',Ticket::STATUS_IN_PROGRESS)->with('operator')->orderBy('updated_at','desc')->get()->toArray();
-
-        return view('site.display',compact('tickets'));
+        return view('site.display',compact('data'));
     }
     private function getTicketNumber(Service $service){
         $ticket = \App\Models\Ticket::where('service_id',$service->id)->orderByDesc('id')->first();

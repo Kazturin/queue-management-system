@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class TicketDisplay extends Component
@@ -23,7 +24,10 @@ class TicketDisplay extends Component
     public function render()
     {
         if ($this->ticket){
-            $this->count = Ticket::where(['service_id'=>$this->ticket->service_id,'status'=>Ticket::STATUS_WAITING])->where('number','<',$this->ticket->number)->count();
+            $this->count = Ticket::where(['service_id'=>$this->ticket->service_id,'status'=>Ticket::STATUS_WAITING])
+                ->where('number','<',$this->ticket->number)
+                ->whereDate('created_at',Carbon::today())
+                ->count();
         }
 
         return view('livewire.ticket-display');

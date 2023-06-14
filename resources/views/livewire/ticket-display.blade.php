@@ -10,11 +10,11 @@
     </div>
     @if($ticket)
         <div>
-            <div class="text-center">
+            <div class="text-center border-b p-2">
                 <div class="text-xl">Сіздің талон:</div>
                 <div class="text-5xl font-semibold">{{ $ticket->number }}</div>
             </div>
-            <div class="text-center">
+            <div class="text-center p-2">
                 <div class="text-xl">Сіздің алдыңызда:</div>
                 <div class="text-3xl font-semibold">{{ $count }} талон</div>
             </div>

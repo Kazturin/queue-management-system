@@ -13,6 +13,11 @@ module.exports = {
                 primary: colors.purple,
                 success: colors.green,
                 warning: colors.yellow,
+                'light-blue' : '#396195',
+                'strong-blue' : '#0c1c56'
+            },
+            fontFamily : {
+                russoOne : [ "'RussoOne-Regular' , sans-serif" ],
             },
         },
     },

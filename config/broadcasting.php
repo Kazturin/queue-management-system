@@ -42,11 +42,11 @@ return [
 //                'encrypted' => true,
 //                'useTLS' => env('PUSHER_SCHEME', 'https') === 'https',
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'host' => '127.0.0.1',
-                'port' => 6001,
-                'useTLS' => false,
-                'encrypted' => false,
-                'scheme' => 'http'
+                'host' =>  env('PUSHER_HOST'),
+                'port' =>  env('PUSHER_PORT'),
+                'useTLS' => env('PUSHER_SCHEME', 'https') === 'https',
+                'encrypted' => env('PUSHER_SCHEME', 'https') === 'https',
+                'scheme' => env('PUSHER_SCHEME', 'https')
 
             ],
             'client_options' => [

@@ -7,6 +7,7 @@ use App\Events\TicketCreatedEvent;
 use App\Models\OperatorService;
 use App\Models\Ticket;
 use App\Models\User;
+use Carbon\Carbon;
 use Filament\Facades\Filament;
 use Filament\Pages\Page;
 // use Livewire\WithPagination;
@@ -61,7 +62,13 @@ class TakeTickets extends Page
     public function mount(){
         $this->allowServicesIds = OperatorService::where('operator_id',auth()->user()->id)->pluck('service_id');
         $this->test = 'tets';
-        $this->tickets = Ticket::with('service')->whereIn('service_id',$this->allowServicesIds)->where('status',Ticket::STATUS_WAITING)->orderBy('id')->limit(20)->get();
+        $this->tickets = Ticket::with('service')
+            ->whereIn('service_id',$this->allowServicesIds)
+            ->where('status',Ticket::STATUS_WAITING)
+            ->whereDate('created_at',Carbon::today())
+            ->orderBy('id')
+            ->limit(20)
+            ->get();
      //   dd($this->tickets);
         $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->count();
     }
@@ -92,6 +99,12 @@ class TakeTickets extends Page
     }
 
     public function recordUpdated(){
-        $this->tickets = Ticket::with('service')->whereIn('service_id',$this->allowServicesIds)->where('status',Ticket::STATUS_WAITING)->orderBy('id')->limit(20)->get();
+        $this->tickets = Ticket::with('service')
+            ->whereIn('service_id',$this->allowServicesIds)
+            ->where('status',Ticket::STATUS_WAITING)
+            ->whereDate('created_at',Carbon::today())
+            ->orderBy('id')
+            ->limit(20)
+            ->get();
     }
 }

@@ -1,10 +1,20 @@
 @import "../../vendor/filament/filament/resources/css/app.css";
 
-* {
-    font-family: "Rubik", sans-serif;
-    font-size: 1.02rem;
+/** {*/
+/*    font-family: "Rubik", sans-serif;*/
+/*    font-size: 1.02rem;*/
+/*}*/
+
+html,
+body {
+    margin: 0;
+    height: 100%;
 }
 
+@font-face {
+    font-family: "RussoOne-Regular";
+    src: url("../../public/fonts/RussoOne-Regular.ttf") format("truetype");
+}
 .filament-sidebar-nav {
     @apply bg-primary-800 bg-gradient-to-tl from-primary-600 to-primary-700 dark:bg-gray-800 dark:border-gray-700 dark:from-gray-800 dark:to-gray-800;
 }

@@ -15,6 +15,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Validation\Rules\Unique;
 
 class OperatorServiceResource extends Resource
 {
@@ -56,7 +57,12 @@ class OperatorServiceResource extends Resource
                 Forms\Components\Select::make('service_id')
                     ->label('Қызмет')
                     ->required()
-                    ->options(fn() => Service::pluck('name', 'id')->toArray()),
+                    ->options(fn() => Service::pluck('name', 'id')->toArray())
+                    ->unique(callback: function (Unique $rule, callable $get) { // $get callable is used
+                        return $rule
+                            ->where('operator_id', $get('operator_id')) // get the current value in the 'school_id' field
+                            ->where('service_id', $get('service_id'));
+                    }, ignoreRecord: true),
             ]);
     }
 
