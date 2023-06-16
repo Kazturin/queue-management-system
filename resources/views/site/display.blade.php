@@ -5,16 +5,15 @@
 
 @endsection
 
-{{--@push('script')--}}
-{{--    <script>--}}
-{{--        const channel = Echo.channel('public.test.1');--}}
+@push('script')
+    <script>
 
-{{--        channel.subscribed(()=>{--}}
-{{--            console.log('subscribed')--}}
-{{--        }).listen('.test',(event)=>{--}}
-{{--            console.log(event);--}}
-{{--            console.log('ok');--}}
-{{--        });--}}
-{{--    </script>--}}
+        let animations = [];
 
-{{--@endpush--}}
+        // Livewire.hook('message.received',() => {
+        //     console.log('received');
+        // })
+
+    </script>
+
+@endpush

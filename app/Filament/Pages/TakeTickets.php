@@ -82,7 +82,11 @@ class TakeTickets extends Page
             $this->ticket->operator_id = auth()->user()->id;
             $this->ticket->save();
             $this->invitation = true;
-            $this->tickets = Ticket::with('service')->whereIn('service_id',$this->allowServicesIds)->where('status',Ticket::STATUS_WAITING)->orderBy('id')->limit(20)->get();
+            $this->tickets = Ticket::with('service')
+                ->whereIn('service_id',$this->allowServicesIds)
+                ->where('status',Ticket::STATUS_WAITING)
+                ->whereDate('created_at',Carbon::today())
+                ->orderBy('id')->limit(20)->get();
          //   event(new TestEvent());
             $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->count();
             event(new TestEvent());

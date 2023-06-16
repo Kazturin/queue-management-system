@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -41,7 +42,13 @@ class TestEvent implements ShouldBroadcast
         return 'updated';
     }
 
-//    public function broadcastWith(){
-//        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)->with('operator')->orderBy('updated_at','desc')->limit(11)->get()->toArray();
-//    }
+    public function broadcastWith(){
+        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)
+            ->whereDate('created_at',Carbon::today())
+            ->with('operator')
+            ->orderBy('updated_at','desc')
+            ->limit(11)
+            ->get()
+            ->toArray();
+    }
 }
