@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Ticket;
 use Carbon\Carbon;
+use Illuminate\Notifications\Notification;
 use Livewire\Component;
 use Throwable;
 
@@ -40,9 +41,25 @@ class TicketDisplay extends Component
         $this->connection = false;
         $this->emitSelf('refreshComponent');
     }
-//    public function failed(Throwable $e)
-//    {
-//        dd('filed');
-//        //event(new ConnectionLost());
+
+//    public function checkTicketStatus(){
+//       // dd('test');
+//        $this->sendNotification();
 //    }
+
+//    public function sendNotification()
+//    {
+//        $title = 'Notification Title';
+//        $options = [
+//            'body' => 'Notification Body',
+//            // Additional options as per the Notification API
+//        ];
+//
+//        $this->dispatchBrowserEvent('showNotification', [
+//            'title' => $title,
+//            'options' => $options,
+//        ]);
+//       // dd('ok');
+//    }
+
 }

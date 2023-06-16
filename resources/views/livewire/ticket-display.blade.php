@@ -1,10 +1,12 @@
 <div>
-    {{ $connection }}
     @if($connection==false)
         <div class="p-2 bg-red-500 text-white">
             Байланыс жоқ
         </div>
     @endif
+        <div>
+            <button wire:click="requestNotificationPermission">Request Notification Permission</button>
+        </div>
         <div
             wire:poll.5000ms.keep-alive
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
@@ -45,6 +47,9 @@
                     Талон өшірілді немесе табылмады ...
                 </div>
             @endif
+            <div class="text-center">
+                {{ $ticket->created_at }}
+            </div>
         </div>
 </div>
 
@@ -55,6 +60,23 @@
             console.log('test');
             Livewire.emit('disconnected');
         })
+        // Livewire.hook('message.failed', (message, component) => {
+        //     console.log('test');
+        //     Livewire.emit('disconnected');
+        // })
+        //
+        // Livewire.hook('element.updated', (el, component) => {
+        //     console.log('test');
+        // })
 
     });
+
+    // document.addEventListener("livewire:load", function () {
+    //     Livewire.on('showNotification', function (data) {
+    //         console.log('data');
+    //         if (Notification.permission === 'granted') {
+    //             new Notification(data.title, data.options);
+    //         }
+    //     });
+    // });
 </script>
