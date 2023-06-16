@@ -30,6 +30,7 @@ class ServiceResource extends Resource
                 Forms\Components\TextInput::make('abbreviation')
                     ->label(__('Abbreviation'))
                     ->required()
+                    ->unique(ignorable: fn ($record) => $record)
                     ->maxLength(10),
             ]);
     }

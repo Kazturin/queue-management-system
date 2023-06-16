@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-4">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-4 2xl:grid-cols-5">
             @foreach($services as $service)
                 <div class="flex justify-center flex-col border-2 border-primary-500 rounded-md">
                     <div class="p-4 bg-primary-500 text-white font-semibold text-xl"> {{$service->name}} </div>

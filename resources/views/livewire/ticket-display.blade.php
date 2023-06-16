@@ -63,10 +63,10 @@
     });
     document.addEventListener("DOMContentLoaded", () => {
 
-        Livewire.hook('message.failed', (message, component) => {
-            console.log('test');
-            Livewire.emit('disconnected');
-        })
+        // Livewire.hook('message.failed', (message, component) => {
+        //     console.log('test');
+        //     Livewire.emit('disconnected');
+        // })
         // Livewire.hook('message.failed', (message, component) => {
         //     console.log('test');
         //     Livewire.emit('disconnected');

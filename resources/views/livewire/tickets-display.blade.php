@@ -17,7 +17,7 @@
             <div class="flex flex-col flex-1 items-center justify-center text-gray-100 text-5xl uppercase">
 
                 @if($tickets)
-                    <div class="text-8xl font-russoOne">
+                    <div class="text-7xl font-russoOne">
                         <div class="text-center">
                             <div class="bg-light-blue text-white py-3 px-28 rounded-lg">Талон</div>
                             <div>
@@ -40,12 +40,12 @@
         </div>
         <div class="flex-1">
             <table class="h-full min-w-full text-white font-russoOne bg-gray-300">
-                <thead class="bg-strong-blue text-white text-5xl">
+                <thead class="bg-strong-blue text-white text-4xl">
                 <tr class="text-center uppercase text-5xl">
-                    <th class="border-white border-r-8 py-10 px-5 tracking-widest">
+                    <th class="border-white border-r-8 py-6 px-5 tracking-widest">
                         Талон
                     </th>
-                    <th class="py-10 px-5 tracking-widest">
+                    <th class="py-6 px-5 tracking-widest">
                         Терезе
                     </th>
                 </tr>
