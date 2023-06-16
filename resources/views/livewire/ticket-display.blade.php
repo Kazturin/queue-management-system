@@ -4,9 +4,9 @@
             Байланыс жоқ
         </div>
     @endif
-        <div>
-            <button wire:click="requestNotificationPermission">Request Notification Permission</button>
-        </div>
+{{--        <div>--}}
+{{--            <button wire:click="requestPermission">Request Notification Permission</button>--}}
+{{--        </div>--}}
         <div
             wire:poll.5000ms.keep-alive
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
@@ -37,7 +37,7 @@
                         </div>
                     </form>
                     @if($ticket->operator_id)
-                        <div class="text-green-500 text-xl font-semibold">
+                        <div wire:init="checkTicketStatus" class="text-green-500 text-xl font-semibold">
                             Сізді {{ $ticket->operator->number }} - оператор күтіп отыр
                         </div>
                     @endif
@@ -54,6 +54,13 @@
 </div>
 
 <script>
+    Notification.requestPermission(function(permission) {
+        // Quelque soit la réponse de l'utilisateur, nous nous assurons de stocker cette information
+        if (!('permission' in Notification)) Notification.permission = permission;
+        console.log(Notification.permission);
+        // Si l'utilisateur est OK, on crée une notification
+       // if (permission === 'granted') showNotification();
+    });
     document.addEventListener("DOMContentLoaded", () => {
 
         Livewire.hook('message.failed', (message, component) => {
@@ -71,12 +78,10 @@
 
     });
 
-    // document.addEventListener("livewire:load", function () {
-    //     Livewire.on('showNotification', function (data) {
-    //         console.log('data');
-    //         if (Notification.permission === 'granted') {
-    //             new Notification(data.title, data.options);
-    //         }
-    //     });
-    // });
+    document.addEventListener("showNotification", function (e) {
+          //  console.log(title);
+            if (Notification.permission === 'granted') {
+                new Notification(e.detail.title, e.detail.options);
+            }
+    });
 </script>

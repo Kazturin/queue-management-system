@@ -42,24 +42,23 @@ class TicketDisplay extends Component
         $this->emitSelf('refreshComponent');
     }
 
-//    public function checkTicketStatus(){
-//       // dd('test');
-//        $this->sendNotification();
-//    }
+    public function checkTicketStatus(){
+       // dd('test');
+        $this->sendNotification();
+    }
 
-//    public function sendNotification()
-//    {
-//        $title = 'Notification Title';
-//        $options = [
-//            'body' => 'Notification Body',
-//            // Additional options as per the Notification API
-//        ];
-//
-//        $this->dispatchBrowserEvent('showNotification', [
-//            'title' => $title,
-//            'options' => $options,
-//        ]);
-//       // dd('ok');
-//    }
+    public function sendNotification()
+    {
+        $title = 'Электронды кезек';
+        $options = [
+            'body' => 'Сіздің кезегіңіз келді',
+            // Additional options as per the Notification API
+        ];
+
+        $this->dispatchBrowserEvent('showNotification', [
+            'title' => $title,
+            'options' => $options,
+        ]);
+    }
 
 }
