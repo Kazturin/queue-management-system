@@ -16,7 +16,7 @@ class TakeTickets extends Page
 {
 
   //  use WithPagination;
-   // protected static ?string $title = 'Custom Page Title';
+    protected static ?string $title = 'Талондарды шақыру';
 
     public Ticket|null $ticket = null;
 

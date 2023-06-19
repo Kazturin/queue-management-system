@@ -4,12 +4,11 @@
             Шақыру
         </button>
         @if($this->ticket)
-            <div class="flex">
-                <div class="p-4 border-2 border-primary-700 bg-white rounded-md text-2xl text-primary-700 mr-4 shadow-md text-center leading-normal">
-                    <div>Қазіргі талон</div>
-                    <div>{{ $this->ticket->number }}</div>
+            <div class="flex transition duration-150 ease-in-out">
+                <div class="p-2 border-2 border-primary-700 bg-white rounded-md text-2xl text-primary-700 mr-4 shadow-md text-center leading-normal">
+                    <div>Қазіргі талон: {{ $this->ticket->number }} </div>
                 </div>
-                <button wire:click="closeTicket" class="p-4 bg-red-500 rounded-md text-2xl text-white mr-4 shadow-md disabled:bg-sky-300">
+                <button wire:click="closeTicket" class="p-2 bg-red-500 rounded-md text-2xl text-white mr-4 shadow-md disabled:bg-sky-300">
                     Аяқтау
                 </button>
             </div>

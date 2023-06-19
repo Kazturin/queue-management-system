@@ -1,9 +1,5 @@
 <div>
-    @if($connection==false)
-        <div class="p-2 bg-red-500 text-white">
-            Байланыс жоқ
-        </div>
-    @endif
+
 {{--        <div>--}}
 {{--            <button wire:click="requestPermission">Request Notification Permission</button>--}}
 {{--        </div>--}}
@@ -52,15 +48,14 @@
             </div>
         </div>
 </div>
-
+@push('scripts')
 <script>
-    Notification.requestPermission(function(permission) {
-        // Quelque soit la réponse de l'utilisateur, nous nous assurons de stocker cette information
-        if (!('permission' in Notification)) Notification.permission = permission;
-        console.log(Notification.permission);
-        // Si l'utilisateur est OK, on crée une notification
-       // if (permission === 'granted') showNotification();
-    });
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js')
+    }
+
+
     document.addEventListener("DOMContentLoaded", () => {
 
         // Livewire.hook('message.failed', (message, component) => {
@@ -79,9 +74,12 @@
     });
 
     document.addEventListener("showNotification", function (e) {
-          //  console.log(title);
+
             if (Notification.permission === 'granted') {
-                new Notification(e.detail.title, e.detail.options);
+            //    navigator.serviceWorker.ready.then(function(registration) {
+            //        registration.showNotification(e.detail.title, e.detail.options);
+            //    });
             }
     });
 </script>
+@endpush
