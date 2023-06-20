@@ -70,7 +70,7 @@
             channel.subscribed(()=>{
                 console.log('subscribed channel')
             }).listen('.ticketCreated',(event)=>{
-                console.log(event);
+             //   console.log(event);
                 if (allowIds.includes(event.ticket.service_id)){
                     Livewire.emit('recordUpdated');
                 }

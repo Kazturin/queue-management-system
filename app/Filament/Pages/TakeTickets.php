@@ -80,7 +80,7 @@ class TakeTickets extends Page
         if ($this->tickets && count($this->tickets)>0){
             $this->ticket = $this->tickets[0];
             $this->ticket->status = Ticket::STATUS_IN_PROGRESS;
-            if($this->ticket->operator_id!=null) return
+          //  if($this->ticket->operator_id!=null) return
             $this->ticket->operator_id = auth()->user()->id;
             $this->ticket->save();
             TestEvent::dispatch($this->ticket);

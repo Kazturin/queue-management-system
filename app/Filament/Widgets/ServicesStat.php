@@ -45,7 +45,7 @@ class ServicesStat extends BarChartWidget
                     ],
                 ],
             ],
-            'labels' => $query->pluck('name'),
+            'labels' => $query->pluck('abbreviation'),
         ];
     }
 }

@@ -74,8 +74,11 @@
         const channel = Echo.channel('public.test.updated');
 
         var audio = new Audio('/notify.mp3');
+
         audio.muted = true;
+
         channel.subscribed(()=>{
+            audio.play();
             console.log('subscribed channel')
             Livewire.emit('connected');
         }).listen('.updated',(event)=>{
@@ -91,7 +94,6 @@
         let animations =[];
 
         Livewire.hook('message.received',() => {
-            console.log('received');
             let list = Array.from(document.querySelectorAll('[animate-move]'));
 
             animations = list.map(item => {
