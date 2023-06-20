@@ -37,10 +37,11 @@ class TicketDisplay extends Component
         return view('livewire.ticket-display');
     }
 
-    public function disconnected(){
-        $this->connection = false;
-        $this->emitSelf('refreshComponent');
-    }
+//    public function disconnectedd(){
+//     //   $this->connection = false;
+//        dd('disconn');
+//        $this->emitSelf('refreshComponent');
+//    }
 
     public function checkTicketStatus(){
        // dd('test');
