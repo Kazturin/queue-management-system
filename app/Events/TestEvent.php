@@ -42,13 +42,13 @@ class TestEvent implements ShouldBroadcast
         return 'updated';
     }
 
-    public function broadcastWith(){
-        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)
-            ->whereDate('created_at',Carbon::today())
-            ->with('operator')
-            ->orderBy('updated_at','desc')
-            ->limit(11)
-            ->get()
-            ->toArray();
-    }
+//    public function broadcastWith(){
+//        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)
+//            ->whereDate('created_at',Carbon::today())
+//            ->with('operator')
+//            ->orderBy('updated_at','desc')
+//            ->limit(11)
+//            ->get()
+//            ->toArray();
+//    }
 }

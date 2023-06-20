@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Events\TestEvent;
 use App\Events\TicketCreatedEvent;
 use App\Helpers\ArrayHelper;
 use App\Models\OperatorService;
@@ -52,6 +53,7 @@ class SiteController extends Controller
         if ($request->id){
             $ticket = Ticket::where('key',$key)->delete();
            // $ticket->delete();
+            event(new TestEvent());
             return redirect()->back();
         }
 

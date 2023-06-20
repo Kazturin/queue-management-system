@@ -56,6 +56,7 @@ class UserResource extends Resource implements FilamentUser
                     ->label(__('Password'))
                     ->password()
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
+                    ->minLength('8')
                     ->dehydrateStateUsing(fn($state)=>bcrypt($state)),
                 Forms\Components\TextInput::make('number')
                     ->label(__('Number'))

@@ -16,7 +16,7 @@ class TicketDisplay extends Component
     public $count = 0;
     public $ticket_key = null;
 
-    protected $listeners = ['refreshComponent'=>'$refresh'];
+    protected $listeners = ['disconnectedd'];
 
     public function mount(){
 
@@ -39,8 +39,8 @@ class TicketDisplay extends Component
 
 //    public function disconnectedd(){
 //     //   $this->connection = false;
-//        dd('disconn');
-//        $this->emitSelf('refreshComponent');
+//        dd('test');
+//     //   $this->emitSelf('refreshComponent');
 //    }
 
     public function checkTicketStatus(){

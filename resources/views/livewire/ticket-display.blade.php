@@ -3,17 +3,15 @@
 {{--        <div>--}}
 {{--            <button wire:click="requestPermission">Request Notification Permission</button>--}}
 {{--        </div>--}}
-    {{ $connection }}
     @if($connection==false)
         <div class="p-2 bg-red-500 text-white">
             Байланыс жоқ
         </div>
-    @endif
+    @else
         <div
             wire:poll.5000ms.keep-alive
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
         >
-            <div> @error('name'){{ $message }}@enderror </div>
             <div class="flex items-center my-4 border-b pb-4">
                 <img class="w-10 h-10 mr-4" src="{{ asset('img/logo.png') }}" alt="logo">
                 <div class="text-gray-700 text-2xl text-center">
@@ -53,19 +51,21 @@
                 {{ $ticket->created_at }}
             </div>
         </div>
+    @endif
 </div>
 @push('scripts')
 <script>
     if ('serviceWorker' in navigator) {
+
         navigator.serviceWorker
             .register('/sw.js')
     }
 
-
     // document.addEventListener("DOMContentLoaded", () => {
-    //
+    //    // Livewire.emit('disconnectedd');
+    //    // console.log('test 1')
     //     Livewire.hook('message.failed', (message, component) => {
-    //         console.log('test');
+    //         console.log('failed');
     //         Livewire.emit('disconnectedd');
     //     })
     //

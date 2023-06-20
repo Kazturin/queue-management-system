@@ -64,6 +64,8 @@
         <script type="module">
             var allowIds = @json($allowServicesIds);
             const channel = Echo.private('private.ticket.created');
+            const channel2 = Echo.channel('public.test.updated');
+
 
             channel.subscribed(()=>{
                 console.log('subscribed channel')
@@ -71,6 +73,11 @@
                 if (allowIds.includes(event.ticket.service_id)){
                     Livewire.emit('recordUpdated');
                 }
+            });
+            channel2.subscribed(()=>{
+                console.log('subscribed channel')
+            }).listen('.updated',(event)=>{
+                    Livewire.emit('recordUpdated');
             });
         </script>
 
