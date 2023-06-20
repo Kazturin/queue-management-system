@@ -3,11 +3,6 @@
 {{--        <div>--}}
 {{--            <button wire:click="requestPermission">Request Notification Permission</button>--}}
 {{--        </div>--}}
-    @if($connection==false)
-        <div class="p-2 bg-red-500 text-white">
-            Байланыс жоқ
-        </div>
-    @else
         <div
             wire:poll.5000ms.keep-alive
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
@@ -51,7 +46,7 @@
                 {{ $ticket->created_at }}
             </div>
         </div>
-    @endif
+
 </div>
 @push('scripts')
 <script>
@@ -76,7 +71,7 @@
     // });
 
     document.addEventListener("showNotification", function (e) {
-
+console.log('test');
             if (Notification.permission === 'granted') {
                navigator.serviceWorker.ready.then(function(registration) {
                    registration.showNotification(e.detail.title, e.detail.options);

@@ -76,12 +76,14 @@ class TakeTickets extends Page
     public function getTicket(){
 
        // dd($this->test);
+       // dd($this->tickets);
         if ($this->tickets && count($this->tickets)>0){
             $this->ticket = $this->tickets[0];
             $this->ticket->status = Ticket::STATUS_IN_PROGRESS;
+            if($this->ticket->operator_id!=null) return
             $this->ticket->operator_id = auth()->user()->id;
             $this->ticket->save();
-            $this->invitation = true;
+            TestEvent::dispatch($this->ticket);
             $this->tickets = Ticket::with('service')
                 ->whereIn('service_id',$this->allowServicesIds)
                 ->where('status',Ticket::STATUS_WAITING)
@@ -89,10 +91,12 @@ class TakeTickets extends Page
                 ->orderBy('id')->limit(20)->get();
          //   event(new TestEvent());
             $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->count();
-            event(new TestEvent());
+            $this->invitation = true;
+
         }else{
             Filament::notify('warning', 'Кезек бос');
         }
+        return null;
     }
 
     public function closeTicket(){

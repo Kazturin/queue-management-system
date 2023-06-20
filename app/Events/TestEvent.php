@@ -16,13 +16,15 @@ class TestEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public Ticket $ticket;
+
     /**
      * Create a new event instance.
      */
-//    public function __construct()
-//    {
-//        //
-//    }
+    public function __construct(Ticket $ticket)
+    {
+        $this->ticket = $ticket;
+    }
 
     /**
      * Get the channels the event should broadcast on.
@@ -41,6 +43,10 @@ class TestEvent implements ShouldBroadcast
     {
         return 'updated';
     }
+
+  //  public function broadcastWith(){
+  //      return $this->ticket;
+  //  }
 
 //    public function broadcastWith(){
 //        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)

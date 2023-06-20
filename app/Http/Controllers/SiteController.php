@@ -43,6 +43,7 @@ class SiteController extends Controller
         ]);
 
         TicketCreatedEvent::dispatch($ticket);
+
      //   event(new TicketCreatedEvent($ticket));
 
         return redirect()->route('ticket', ['key'=>$ticket->key]);
@@ -51,9 +52,10 @@ class SiteController extends Controller
     public function ticket(Request $request, string $key){
 
         if ($request->id){
-            $ticket = Ticket::where('key',$key)->delete();
+            $ticket = Ticket::where('key',$key)->first();
            // $ticket->delete();
-            event(new TestEvent());
+            TestEvent::dispatch($ticket);
+            $ticket->delete();
             return redirect()->back();
         }
 
