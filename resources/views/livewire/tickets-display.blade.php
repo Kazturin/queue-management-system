@@ -1,4 +1,5 @@
 <div class="h-full">
+    <audio class="hidden" src="/notify.mp3" id="audio"></audio>
     @if($connection==false)
         <div class="p-2 bg-red-500 text-white">
             Байланыс жоқ
@@ -73,18 +74,13 @@
 
         const channel = Echo.channel('public.test.updated');
 
-        var audio = new Audio('/notify.mp3');
-
-        audio.muted = true;
-
+      //  var audio = new Audio('/notify.mp3');
+      //  audio.muted = true;
+        var audio = document.getElementById("audio");
         channel.subscribed(()=>{
-            audio.play().catch(e => {
-                window.addEventListener('click', () => {
-                    audio.play()
-                })
-            })
             console.log('subscribed channel')
             Livewire.emit('connected');
+          console.log(t);
         }).listen('.updated',(event)=>{
             Livewire.emit('recordUpdated');
             audio.play();
