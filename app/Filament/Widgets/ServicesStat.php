@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Ticket;
 use Filament\Widgets\BarChartWidget;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +27,9 @@ class ServicesStat extends BarChartWidget
     {
         $query = DB::table('services')
             ->join('tickets', 'services.id', '=', 'tickets.service_id')
-            ->select('services.name', DB::raw('count(*) as count'))
-            ->groupBy('services.name')
+            ->select('services.abbreviation', DB::raw('count(*) as count'))
+            ->where('tickets.status',Ticket::STATUS_IN_PROGRESS)
+            ->groupBy('services.abbreviation')
             ->orderBy('count','desc')
             ->limit(10)
             ->get();

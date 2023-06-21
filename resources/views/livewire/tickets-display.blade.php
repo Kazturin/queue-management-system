@@ -78,7 +78,11 @@
         audio.muted = true;
 
         channel.subscribed(()=>{
-            audio.play();
+            audio.play().catch(e => {
+                window.addEventListener('click', () => {
+                    audio.play()
+                })
+            })
             console.log('subscribed channel')
             Livewire.emit('connected');
         }).listen('.updated',(event)=>{

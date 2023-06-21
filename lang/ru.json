@@ -12,5 +12,7 @@
     "Updated At": "Изменен",
     "Password": "Пароль",
     "Abbreviation": "Аббревиатура",
-    "Assignment of Service to Operator": "Назначение услуги оператору"
+    "Assignment of Service to Operator": "Назначение услуги оператору",
+    "Subject" : "Предмет",
+    "Date": "Время"
 }

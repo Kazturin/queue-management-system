@@ -23,6 +23,7 @@
                         <div class="text-xl">Сіздің алдыңызда:</div>
                         <div class="text-3xl font-semibold">{{ $count }} талон</div>
                     </div>
+                    @if($ticket->operator_id==null)
                     <form method="POST" onsubmit="return confirm('Талонды өшіру?');">
                         @csrf
                         <div class="text-center">
@@ -31,7 +32,7 @@
                                     class="bg-red-500 text-white rounded-md my-4 p-2">Кезектен шығу</button>
                         </div>
                     </form>
-                    @if($ticket->operator_id)
+                    @else
                         <div wire:init="checkTicketStatus" class="text-green-500 text-xl font-semibold">
                             Сізді {{ $ticket->operator->number }} - оператор күтіп отыр
                         </div>

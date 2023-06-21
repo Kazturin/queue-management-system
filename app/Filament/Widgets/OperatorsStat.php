@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Filament\Resources\PermissionResource;
+use App\Models\Ticket;
 use App\Models\User;
 use Filament\Widgets\BarChartWidget;
 use Filament\Widgets\Widget;
@@ -29,6 +30,7 @@ class OperatorsStat extends BarChartWidget
         $query = DB::table('users')
             ->join('tickets', 'users.id', '=', 'tickets.operator_id')
             ->select('users.name', DB::raw('count(*) as count'))
+            ->where('tickets.status',Ticket::STATUS_IN_PROGRESS)
             ->groupBy('users.name')
             ->orderBy('count','desc')
             ->limit(10)
