@@ -80,7 +80,6 @@
         channel.subscribed(()=>{
             console.log('subscribed channel')
             Livewire.emit('connected');
-          console.log(t);
         }).listen('.updated',(event)=>{
             Livewire.emit('recordUpdated');
             audio.play();

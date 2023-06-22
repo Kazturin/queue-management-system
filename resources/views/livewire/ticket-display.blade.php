@@ -4,7 +4,7 @@
 {{--            <button wire:click="requestPermission">Request Notification Permission</button>--}}
 {{--        </div>--}}
         <div
-            wire:poll.5000ms.keep-alive
+           {{ $ticket->operator_id==null? 'wire:poll.5000ms.keep-alive':''}}
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
         >
             <div class="flex items-center my-4 border-b pb-4">
@@ -16,8 +16,11 @@
             @if($ticket)
                 <div>
                     <div class="text-center border-b p-2">
-                        <div class="text-xl">Сіздің талон:</div>
+                        <div class="text-xl mb-2">Сіздің талон:</div>
                         <div class="text-5xl font-semibold">{{ $ticket->number }}</div>
+                        <div>
+                            {{ $ticket->service->name }}
+                        </div>
                     </div>
                     <div class="text-center p-2">
                         <div class="text-xl">Сіздің алдыңызда:</div>
@@ -56,6 +59,8 @@
         navigator.serviceWorker
             .register('/sw.js')
     }
+
+    Notification.requestPermission();
 
     // document.addEventListener("DOMContentLoaded", () => {
     //    // Livewire.emit('disconnectedd');

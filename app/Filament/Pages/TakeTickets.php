@@ -69,7 +69,7 @@ class TakeTickets extends Page
             ->orderBy('id')
             ->limit(20)
             ->get();
-     //   dd($this->tickets);
+     // dd($this->tickets);
         $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->count();
     }
 
@@ -81,18 +81,17 @@ class TakeTickets extends Page
             $this->ticket = $this->tickets[0];
             $this->ticket->status = Ticket::STATUS_IN_PROGRESS;
           //  if($this->ticket->operator_id!=null) return
-            $this->ticket->operator_id = auth()->user()->id;
+       //    dd($this->ticket->save());
             $this->ticket->save();
-            TestEvent::dispatch($this->ticket);
-            $this->tickets = Ticket::with('service')
-                ->whereIn('service_id',$this->allowServicesIds)
-                ->where('status',Ticket::STATUS_WAITING)
-                ->whereDate('created_at',Carbon::today())
-                ->orderBy('id')->limit(20)->get();
-         //   event(new TestEvent());
-            $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->count();
-            $this->invitation = true;
-
+                TestEvent::dispatch($this->ticket);
+                $this->tickets = Ticket::with('service')
+                    ->whereIn('service_id',$this->allowServicesIds)
+                    ->where('status',Ticket::STATUS_WAITING)
+                    ->whereDate('created_at',Carbon::today())
+                    ->orderBy('id')->limit(20)->get();
+                //   event(new TestEvent());
+                $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->whereDate('created_at',Carbon::today())->count();
+                $this->invitation = true;
         }else{
             Filament::notify('warning', 'Кезек бос');
         }

@@ -28,4 +28,19 @@ class Ticket extends Model
     public function service(){
         return $this->hasOne(Service::class,'id','service_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::updating(function (Ticket $item) {
+
+            if ($item->operator_id == null){
+                $item->attributes['operator_id'] = auth()->user()->id;
+                dd($item);
+                return true;
+            }
+            return false;
+        });
+    }
 }
