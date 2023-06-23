@@ -77,22 +77,24 @@ class TakeTickets extends Page
 
        // dd($this->test);
        // dd($this->tickets);
-        if ($this->tickets && count($this->tickets)>0){
-            $this->ticket = $this->tickets[0];
-            $this->ticket->status = Ticket::STATUS_IN_PROGRESS;
+
+        $ticket = $this->getFirstTicket();
+        if ($ticket){
+        //    $this->ticket = $this->tickets[0];
+            $ticket->status = Ticket::STATUS_IN_PROGRESS;
           //  if($this->ticket->operator_id!=null) return
-       //    dd($this->ticket->save());
-            $this->ticket->save();
-                TestEvent::dispatch($this->ticket);
-                $this->tickets = Ticket::with('service')
-                    ->whereIn('service_id',$this->allowServicesIds)
-                    ->where('status',Ticket::STATUS_WAITING)
-                    ->whereDate('created_at',Carbon::today())
-                    ->orderBy('id')->limit(20)->get();
-                //   event(new TestEvent());
-                $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->whereDate('created_at',Carbon::today())->count();
+        //    dd($this->ticket->save());
+            if($ticket->save()){
+                TestEvent::dispatch($ticket);
+                $this->ticket = $ticket;
+                $this->recordUpdated();
+                //  $this->ticketsCount = Ticket::where('operator_id',auth()->user()->id)->whereDate('created_at',Carbon::today())->count();
                 $this->invitation = true;
-        }else{
+            }
+            else{
+                $this->getTicket();
+            }
+        } else {
             Filament::notify('warning', 'Кезек бос');
         }
         return null;
@@ -113,5 +115,15 @@ class TakeTickets extends Page
             ->orderBy('id')
             ->limit(20)
             ->get();
+    }
+
+    public function getFirstTicket(){
+        return Ticket::with('service')
+            ->whereIn('service_id',$this->allowServicesIds)
+            ->where('status',Ticket::STATUS_WAITING)
+            ->whereDate('created_at',Carbon::today())
+            ->orderBy('id')
+            ->limit(20)
+            ->get()[0];
     }
 }

@@ -37,7 +37,6 @@ class Ticket extends Model
 
             if ($item->operator_id == null){
                 $item->attributes['operator_id'] = auth()->user()->id;
-                dd($item);
                 return true;
             }
             return false;

@@ -55,9 +55,9 @@
         </div>
 
     </div>
-    <div>
-        Шақырылған талондар саны: {{ $ticketsCount }}
-    </div>
+{{--    <div>--}}
+{{--        Шақырылған талондар саны: {{ $ticketsCount }}--}}
+{{--    </div>--}}
 
     @push('scripts')
         @vite('resources/js/pusher.js')

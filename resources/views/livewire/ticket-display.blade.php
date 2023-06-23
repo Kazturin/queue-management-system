@@ -37,7 +37,7 @@
                     </form>
                     @else
                         <div wire:init="checkTicketStatus" class="text-green-500 text-xl font-semibold">
-                            Сізді {{ $ticket->operator->number }} - оператор күтіп отыр
+                            Сізді {{ $ticket->operator->number }} - үстелге шақырды
                         </div>
                     @endif
                 </div>
