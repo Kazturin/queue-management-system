@@ -1,6 +1,6 @@
 <x-filament::page>
     <div class="flex">
-        <button {{ $this->invitation ? 'disabled' : null }} wire:click="getTicket" class="p-4 bg-primary-600 rounded-md text-2xl  text-white mr-4 shadow-md disabled:cursor-not-allowed">
+        <button {{ $this->invitation ? 'disabled' : null }} wire:click="getTicket" class="p-4 bg-primary-600 rounded-md text-2xl  text-white mr-4 shadow-md disabled:cursor-not-allowed disabled:bg-primary-300">
             Шақыру
         </button>
         @if($this->ticket)
@@ -55,9 +55,9 @@
         </div>
 
     </div>
-{{--    <div>--}}
-{{--        Шақырылған талондар саны: {{ $ticketsCount }}--}}
-{{--    </div>--}}
+    <div>
+        Шақырылған талондар саны: {{ $ticketsCount }}
+    </div>
 
     @push('scripts')
         <script src="/js/notification.js"></script>
