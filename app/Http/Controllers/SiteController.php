@@ -21,15 +21,13 @@ use Ratchet\Server\EchoServer;
 class SiteController extends Controller
 {
     public function services(){
-
-//        $user = User::find(11);
-//
-//        dd($user->services->pluck('id')->contains(6));
-
         $services = Service::all();
-
         return view('site.services',compact('services'));
+    }
 
+    public function servicesPrint(){
+        $services = Service::all();
+        return view('site.services-print',compact('services'));
     }
 
     public function ticketCreate(Service $service){

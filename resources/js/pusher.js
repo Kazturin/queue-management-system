@@ -4,7 +4,8 @@ import Echo from 'laravel-echo';
 
 import Pusher from 'pusher-js';
 
-window.Pusher = Pusher;
+// import { showNotification } from "./notification.js";
+//window.Pusher = Pusher;
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
@@ -17,7 +18,7 @@ window.Echo = new Echo({
     encrypted: false,
     enabledTransports: ['ws', 'wss'],
 });
-
+// showNotification("Hello", { body: "Welcome to my website!" });
 // console.log(window.Echo.connector.pusher.connection);
 //
 // window.Echo.connector.pusher.connection.bind('disconnected', () => {

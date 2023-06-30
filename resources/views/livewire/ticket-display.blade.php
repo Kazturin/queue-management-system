@@ -80,6 +80,7 @@
 console.log('test');
             if (Notification.permission === 'granted') {
                navigator.serviceWorker.ready.then(function(registration) {
+                   console.log(e.detail.options);
                    registration.showNotification(e.detail.title, e.detail.options);
                });
             }

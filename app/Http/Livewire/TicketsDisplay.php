@@ -22,13 +22,7 @@ class TicketsDisplay extends Component
 
     public function mount(){
 
-        $this->tickets = Ticket::where('status',Ticket::STATUS_IN_PROGRESS)
-            ->whereDate('created_at',Carbon::today())
-            ->with('operator')
-            ->orderBy('updated_at','desc')
-            ->limit(10)
-            ->get()
-            ->toArray();
+        $this->tickets = $this->getTickets();
 
       // dd(array_splice($this->tickets, 1 ));
     }
@@ -40,13 +34,19 @@ class TicketsDisplay extends Component
 
     public function recordUpdated(){
         //$this->test = $event;
-        $this->tickets = Ticket::where('status',Ticket::STATUS_IN_PROGRESS)
+        $this->tickets = $this->getTickets();
+    }
+
+    public function getTickets(){
+        return Ticket::where('status',Ticket::STATUS_IN_PROGRESS)
             ->whereDate('created_at',Carbon::today())
-            ->with('operator')->orderBy('updated_at','desc')
-            ->limit(10)
+            ->with('operator')
+            ->orderBy('updated_at','desc')
+            ->limit(11)
             ->get()
             ->toArray();
     }
+
     public function connected(){
         $this->connection = true;
         $this->emitSelf('refreshComponent');

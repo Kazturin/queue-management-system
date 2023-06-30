@@ -4,7 +4,7 @@
             Шақыру
         </button>
         @if($this->ticket)
-            <div class="flex transition duration-150 ease-in-out">
+            <div class="flex transition-all duration-200 ease-in-out">
                 <div class="p-2 border-2 border-primary-700 bg-white rounded-md text-2xl text-primary-700 mr-4 shadow-md text-center leading-normal">
                     <div>Қазіргі талон: {{ $this->ticket->number }} </div>
                 </div>
@@ -30,7 +30,7 @@
                         <th class="px-4 py-3">{{ __('Date') }}</th>
                     </tr>
                     </thead>
-                    <tbody
+                    <tbody id="body"
                         class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                     >
                     @foreach($this->tickets as $item)
@@ -60,21 +60,34 @@
 {{--    </div>--}}
 
     @push('scripts')
-        @vite('resources/js/pusher.js')
+        <script src="/js/notification.js"></script>
+
+        @vite(['resources/js/pusher.js'])
         <script type="module">
+
+            window.Notifi.requestPermission();
+
             var allowIds = @json($allowServicesIds);
             const channel = Echo.private('private.ticket.created');
             const channel2 = Echo.channel('public.test.updated');
-
-
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                    .register('/sw.js')
+            }
+        let list = document.getElementById("body");
             channel.subscribed(()=>{
                 console.log('subscribed channel')
             }).listen('.ticketCreated',(event)=>{
-             //   console.log(event);
                 if (allowIds.includes(event.ticket.service_id)){
                     Livewire.emit('recordUpdated');
                 }
+                if (list.childElementCount===0){
+                    if (window.Notifi.permission === "granted") {
+                         new window.Notifi("Талон",{ body:"Жаңа талон"});
+                    }
+                }
             });
+
             channel2.subscribed(()=>{
                 console.log('subscribed channel2')
             }).listen('.updated',(event)=>{

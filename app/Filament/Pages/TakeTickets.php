@@ -123,7 +123,6 @@ class TakeTickets extends Page
             ->where('status',Ticket::STATUS_WAITING)
             ->whereDate('created_at',Carbon::today())
             ->orderBy('id')
-            ->limit(20)
-            ->get()[0];
+            ->first();
     }
 }

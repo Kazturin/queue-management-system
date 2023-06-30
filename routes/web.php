@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(SiteController::class)->group(function () {
     Route::get('/', 'services')->name('services');
+    Route::get('/print', 'servicesPrint')->name('services-print');
     Route::get('/ticket-create/{service}', 'ticketCreate')->name('ticket-create');
     Route::any('/ticket/{key}', 'ticket')->name('ticket');
     Route::get('/display', 'display')->name('display');
