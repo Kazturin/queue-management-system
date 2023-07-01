@@ -1,6 +1,6 @@
 <x-filament::page>
     <div class="flex">
-        <button {{ $this->invitation ? 'disabled' : null }} wire:click="getTicket" class="p-4 bg-primary-600 rounded-md text-2xl  text-white mr-4 shadow-md disabled:cursor-not-allowed disabled:bg-primary-300">
+        <button id="btn" {{ $this->invitation ? 'disabled' : null }} wire:click="getTicket" class="p-4 bg-primary-600 rounded-md text-2xl  text-white mr-4 shadow-md disabled:cursor-not-allowed disabled:bg-primary-300">
             Шақыру
         </button>
         @if($this->ticket)
@@ -74,14 +74,15 @@
                 navigator.serviceWorker
                     .register('/sw.js')
             }
-        let list = document.getElementById("body");
+            let list = document.getElementById("body");
+            let btn = document.getElementById('btn');
             channel.subscribed(()=>{
                 console.log('subscribed channel')
             }).listen('.ticketCreated',(event)=>{
                 if (allowIds.includes(event.ticket.service_id)){
                     Livewire.emit('recordUpdated');
                 }
-                if (list.childElementCount===0){
+                if (list.childElementCount===0 && !btn.hasAttribute('disabled')){
                     if (window.Notifi.permission === "granted") {
                          new window.Notifi("Талон",{ body:"Жаңа талон"});
                     }

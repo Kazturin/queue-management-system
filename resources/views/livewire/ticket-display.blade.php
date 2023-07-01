@@ -62,6 +62,7 @@
 
     Notification.requestPermission();
 
+
     // document.addEventListener("DOMContentLoaded", () => {
     //    // Livewire.emit('disconnectedd');
     //    // console.log('test 1')
@@ -82,6 +83,10 @@ console.log('test');
                navigator.serviceWorker.ready.then(function(registration) {
                    console.log(e.detail.options);
                    registration.showNotification(e.detail.title, e.detail.options);
+                   registration.onclick = function() {
+                    //   event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                       window.open(window.location.href,'_blank');
+                   };
                });
             }
     });
