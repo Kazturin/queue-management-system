@@ -36,6 +36,8 @@ class TakeTickets extends Page
         'recordUpdated',
     ];
 
+    public bool $testBool;
+
     protected static function shouldRegisterNavigation(): bool
     {
         $user = User::find(auth()->user()->id);
@@ -60,8 +62,8 @@ class TakeTickets extends Page
     }
 
     public function mount(){
+        $this->testBool = in_array(auth()->user()->id,[70,71,73]);
         $this->allowServicesIds = auth()->user()->services->pluck('id');
-        $this->test = 'tets';
         $this->tickets = Ticket::with('service')
             ->whereIn('service_id',$this->allowServicesIds)
             ->where('status',Ticket::STATUS_WAITING)
@@ -122,4 +124,5 @@ class TakeTickets extends Page
             ->orderBy('id')
             ->first();
     }
+
 }
