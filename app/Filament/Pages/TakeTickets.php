@@ -36,7 +36,7 @@ class TakeTickets extends Page
         'recordUpdated',
     ];
 
-    public bool $testBool;
+  //  public bool $testBool;
 
     protected static function shouldRegisterNavigation(): bool
     {
@@ -62,7 +62,7 @@ class TakeTickets extends Page
     }
 
     public function mount(){
-        $this->testBool = in_array(auth()->user()->id,[70,71,73]);
+   //     $this->testBool = in_array(auth()->user()->id,[5,2]);
         $this->allowServicesIds = auth()->user()->services->pluck('id');
         $this->tickets = Ticket::with('service')
             ->whereIn('service_id',$this->allowServicesIds)

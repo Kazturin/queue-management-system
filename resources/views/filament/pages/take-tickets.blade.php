@@ -1,14 +1,10 @@
 <x-filament::page>
     <div class="flex">
-        @if($this->testBool)
+
         <button id="btn" {{ $this->invitation ? 'disabled' : null }} wire:click="getTicket" class="p-4 bg-primary-600 rounded-md text-2xl  text-white mr-4 shadow-md disabled:cursor-not-allowed disabled:bg-primary-300">
             Шақыру
         </button>
-        @else
-            <div id="btn"  class="py-4 px-8 bg-pink-500 rounded-md text-2xl  text-white mr-4 shadow-md cursor-default">
-                Test
-            </div>
-        @endif
+
         @if($this->ticket)
             <div class="flex transition-all duration-200 ease-in-out">
                 <div class="p-2 border-2 border-primary-700 bg-white rounded-md text-2xl text-primary-700 mr-4 shadow-md text-center leading-normal">
