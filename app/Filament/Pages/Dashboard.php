@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Filament\Widgets\OperatorsStat;
 use App\Filament\Widgets\ServicesStat;
+use App\Filament\Widgets\TicketsStat;
 use Filament\Pages\Dashboard as BasePage;
 
 class Dashboard extends BasePage
@@ -20,7 +21,8 @@ class Dashboard extends BasePage
     {
         return [
             OperatorsStat::class,
-            ServicesStat::class
+            ServicesStat::class,
+            TicketsStat::class
         ];
     }
 }

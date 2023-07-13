@@ -15,8 +15,9 @@ Queue management system
 <li>Run <code>php artisan queue:work</code></li>
 </ol>
 
+http://localhost:8000/admin <br>
 http://localhost:8000 - qr codes for queuing
-http://localhost:8000/admin
+
 
 login: admin <br>
 pass: admin
