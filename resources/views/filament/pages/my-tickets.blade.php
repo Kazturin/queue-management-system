@@ -38,12 +38,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="p-2">
-                    {{ $this->tickets->links() }}
-                </div>
             </div>
         </div>
     </div>
-
-
 </x-filament::page>

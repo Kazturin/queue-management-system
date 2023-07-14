@@ -6,12 +6,9 @@ use App\Models\Ticket;
 use App\Models\User;
 use Carbon\Carbon;
 use Filament\Pages\Page;
-use Livewire\WithPagination;
 
 class MyTickets extends Page
 {
-
-    use WithPagination;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
@@ -35,12 +32,18 @@ class MyTickets extends Page
         return 'Қабылданған талондар';
     }
 
+    public function getQueryString()
+    {
+        return [];
+    }
+
     public function mount(){
 
         $this->tickets = Ticket::with('service')
             ->where(['status'=>Ticket::STATUS_IN_PROGRESS,'operator_id'=>auth()->user()->id])
             ->whereDate('created_at',Carbon::today())
             ->orderBy('id')
-            ->paginate(10);
+            ->get();
     }
+
 }
