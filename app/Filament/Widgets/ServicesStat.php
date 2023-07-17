@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Filament\Widgets\BarChartWidget;
 use Filament\Widgets\Widget;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,7 @@ class ServicesStat extends BarChartWidget
         $query = DB::table('services')
             ->join('tickets', 'services.id', '=', 'tickets.service_id')
             ->select('services.abbreviation', DB::raw('count(*) as count'))
+            ->whereDate('created_at',Carbon::today())
             ->where('tickets.status',Ticket::STATUS_IN_PROGRESS)
             ->groupBy('services.abbreviation')
             ->orderBy('count','desc')
@@ -40,7 +42,17 @@ class ServicesStat extends BarChartWidget
                     'label' => 'Қабылданған талондар саны',
                     'data' => $query->pluck('count'),
                     'backgroundColor' => [
-                        'rgba(54, 162, 235, .6)'
+                        'rgba(230, 5, 68, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
+                        'rgba(54, 162, 235, .6)',
                     ],
                     'borderColor' => [
                         'rgba(54, 162, 235, .8)'

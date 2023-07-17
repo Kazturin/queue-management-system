@@ -21,6 +21,7 @@ use Ratchet\Server\EchoServer;
 class SiteController extends Controller
 {
     public function services(){
+
         $services = Service::all();
         return view('site.services',compact('services'));
     }
@@ -48,6 +49,7 @@ class SiteController extends Controller
     }
 
     public function ticket(Request $request, string $key){
+
 
         if ($request->id){
             $ticket = Ticket::where('key',$key)->first();

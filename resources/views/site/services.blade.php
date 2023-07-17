@@ -20,7 +20,7 @@
                             <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->style('dot')->eye('circle')->merge('/public/img/logo.png')->size(200)->gradient(255, 0, 0, 0, 0, 255, 'diagonal')->margin(1)->generate(route('ticket-create',$service))) !!} ">
 {{--                            {!! QrCode::size(200)->generate(Request::url(route('ticket-create',$service))); !!}--}}
                         </div>
-                       
+{{--                        <a href="{{ route('ticket-create',['service'=>$service])}}" target="_blank">go</a>--}}
                     </div>
                 @endforeach
             </div>

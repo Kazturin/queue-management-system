@@ -15,7 +15,7 @@ use Filament\Pages\Page;
 class TakeTickets extends Page
 {
 
-  //  use WithPagination;
+    //  use WithPagination;
     protected static ?string $title = 'Талондарды шақыру';
 
     public Ticket|null $ticket = null;
@@ -36,7 +36,7 @@ class TakeTickets extends Page
         'recordUpdated',
     ];
 
-  //  public bool $testBool;
+    //  public bool $testBool;
 
     protected static function shouldRegisterNavigation(): bool
     {
@@ -49,7 +49,7 @@ class TakeTickets extends Page
 
 
 
-   // protected $listeners = ['refreshComponent' => '$refresh'];
+    // protected $listeners = ['refreshComponent' => '$refresh'];
 
     protected static function getNavigationLabel(): string
     {
@@ -62,7 +62,7 @@ class TakeTickets extends Page
     }
 
     public function mount(){
-   //     $this->testBool = in_array(auth()->user()->id,[5,2]);
+        //     $this->testBool = in_array(auth()->user()->id,[5,2]);
         $this->allowServicesIds = auth()->user()->services->pluck('id');
         $this->tickets = Ticket::with('service')
             ->whereIn('service_id',$this->allowServicesIds)
@@ -76,8 +76,8 @@ class TakeTickets extends Page
 
     public function getTicket(){
 
-       // dd($this->test);
-       // dd($this->tickets);
+        // dd($this->test);
+        // dd($this->tickets);
 
         $ticket = $this->getFirstTicket();
         if ($ticket){
@@ -102,8 +102,8 @@ class TakeTickets extends Page
     public function closeTicket(){
         $this->ticket = null;
         $this->invitation = false;
-       // $this->emit('refreshComponent');
-     //   $this->tickets = Ticket::whereIn('service_id',$this->allowServicesIds)->where('status',Ticket::STATUS_WAITING)->orderBy('id')->get();
+        // $this->emit('refreshComponent');
+        //   $this->tickets = Ticket::whereIn('service_id',$this->allowServicesIds)->where('status',Ticket::STATUS_WAITING)->orderBy('id')->get();
     }
 
     public function recordUpdated(){
