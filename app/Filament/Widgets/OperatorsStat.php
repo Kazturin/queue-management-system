@@ -23,7 +23,7 @@ class OperatorsStat extends BarChartWidget
 
     protected function getHeading(): string
     {
-        return 'Операторлар';
+        return 'Операторлар '.Carbon::now()->format('d-m-Y');
     }
 
     protected function getData(): array
@@ -45,16 +45,6 @@ class OperatorsStat extends BarChartWidget
                     'label' => 'Қабылданған талондар саны',
                     'data' => $query->pluck('count'),
                     'backgroundColor' => [
-                        'rgba(230, 5, 68, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
                         'rgba(54, 162, 235, .6)',
                     ],
                     'borderColor' => [

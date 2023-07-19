@@ -21,7 +21,7 @@ class TicketsStat extends BarChartWidget
 
     protected function getHeading(): string
     {
-        return 'Білім бағдарламалары(кезектегі талондар)';
+        return 'Білім бағдарламалары(кезектегі талондар) '.Carbon::now()->format('d-m-Y');
     }
 
     protected function getData(): array

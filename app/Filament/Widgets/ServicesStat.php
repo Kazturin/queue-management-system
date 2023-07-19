@@ -21,7 +21,7 @@ class ServicesStat extends BarChartWidget
 
     protected function getHeading(): string
     {
-        return 'Білім бағдарламалары(талон)';
+        return 'Білім бағдарламалары(талон) '.Carbon::now()->format('d-m-Y');
     }
 
     protected function getData(): array
@@ -42,16 +42,6 @@ class ServicesStat extends BarChartWidget
                     'label' => 'Қабылданған талондар саны',
                     'data' => $query->pluck('count'),
                     'backgroundColor' => [
-                        'rgba(230, 5, 68, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
-                        'rgba(54, 162, 235, .6)',
                         'rgba(54, 162, 235, .6)',
                     ],
                     'borderColor' => [
