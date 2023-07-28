@@ -21,7 +21,7 @@ class TicketsStat extends BarChartWidget
 
     protected function getHeading(): string
     {
-        return 'Білім бағдарламалары(кезектегі талондар) '.Carbon::now()->format('d-m-Y');
+        return __('Queue coupons');
     }
 
     protected function getData(): array
@@ -39,7 +39,7 @@ class TicketsStat extends BarChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Кезектегі талондар',
+                    'label' => __('Queue coupons'),
                     'data' => $query->pluck('count'),
                     'backgroundColor' => [
                         'rgba(54, 162, 235, .6)'

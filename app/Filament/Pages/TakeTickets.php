@@ -15,8 +15,9 @@ use Filament\Pages\Page;
 class TakeTickets extends Page
 {
 
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-copy';
     //  use WithPagination;
-    protected static ?string $title = 'Талондарды шақыру';
+ //   protected static ?string $title = 'Талондарды шақыру';
 
     public Ticket|null $ticket = null;
 
@@ -24,18 +25,20 @@ class TakeTickets extends Page
 
     public $ticketsCount = 0;
 
+    protected static function getNavigationLabel(): string
+    {
+        return __('Acceptance of coupons');
+    }
+
     public $allowServicesIds = [];
 
     public bool $invitation = false;
-
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.pages.take-tickets';
 
     protected $listeners = [
         'recordUpdated',
     ];
-
     //  public bool $testBool;
 
     protected static function shouldRegisterNavigation(): bool
@@ -48,17 +51,9 @@ class TakeTickets extends Page
     }
 
 
-
-    // protected $listeners = ['refreshComponent' => '$refresh'];
-
-    protected static function getNavigationLabel(): string
-    {
-        return 'Талондар қабылдау';
-    }
-
     protected function getHeading(): string
     {
-        return 'Талон';
+        return __('Acceptance of coupons');
     }
 
     public function mount(){

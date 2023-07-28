@@ -10,7 +10,7 @@ use Filament\Pages\Page;
 class MyTickets extends Page
 {
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-check';
 
     protected $tickets;
 
@@ -25,11 +25,16 @@ class MyTickets extends Page
 
     protected static string $view = 'filament.pages.my-tickets';
 
-    protected static ?string $title = 'Қабылданған талондар';
+   // protected static ?string $title = __('Accepted coupons');
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('Accepted coupons');
+    }
 
     protected function getHeading(): string
     {
-        return 'Қабылданған талондар';
+        return __('Accepted coupons');
     }
 
     public function getQueryString()

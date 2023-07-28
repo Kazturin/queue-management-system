@@ -21,7 +21,7 @@ class ServicesStat extends BarChartWidget
 
     protected function getHeading(): string
     {
-        return 'Білім бағдарламалары(талон) '.Carbon::now()->format('d-m-Y');
+        return __('Accepted coupons');
     }
 
     protected function getData(): array
@@ -39,7 +39,7 @@ class ServicesStat extends BarChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Қабылданған талондар саны',
+                    'label' => __('Accepted coupons'),
                     'data' => $query->pluck('count'),
                     'backgroundColor' => [
                         'rgba(54, 162, 235, .6)',

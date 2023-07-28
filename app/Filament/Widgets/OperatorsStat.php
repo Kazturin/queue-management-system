@@ -23,7 +23,7 @@ class OperatorsStat extends BarChartWidget
 
     protected function getHeading(): string
     {
-        return 'Операторлар '.Carbon::now()->format('d-m-Y');
+        return __('Technical secretaries');
     }
 
     protected function getData(): array
@@ -42,7 +42,7 @@ class OperatorsStat extends BarChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Қабылданған талондар саны',
+                    'label' => __('Accepted coupons'),
                     'data' => $query->pluck('count'),
                     'backgroundColor' => [
                         'rgba(54, 162, 235, .6)',

@@ -2,7 +2,7 @@
     <div class="flex">
 
         <button id="btn" {{ $this->invitation ? 'disabled' : null }} wire:click="getTicket" class="p-4 bg-primary-600 rounded-md text-2xl  text-white mr-4 shadow-md disabled:cursor-not-allowed disabled:bg-primary-300">
-            Шақыру
+            {{ __('Call') }}
         </button>
 
         @if($this->ticket)
@@ -11,7 +11,7 @@
                     <div>Қазіргі талон: {{ $this->ticket->number }} </div>
                 </div>
                 <button wire:click="closeTicket" class="p-2 bg-red-500 rounded-md text-2xl text-white mr-4 shadow-md disabled:bg-sky-300">
-                    Аяқтау
+                    {{ __('Terminate') }}
                 </button>
             </div>
         @endif
@@ -58,7 +58,7 @@
 
     </div>
     <div>
-        Шақырылған талондар саны: {{ $ticketsCount }}
+        {{ __('Number of invited coupons') }}: {{ $ticketsCount }}
     </div>
 
     @push('scripts')

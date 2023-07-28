@@ -14,5 +14,12 @@
     "Abbreviation": "Аббревиатура",
     "Assignment of Service to Operator": "Назначение услуги оператору",
     "Subject" : "Предмет",
-    "Date": "Время"
+    "Date": "Время",
+    "Technical secretaries": "Технические секретари",
+    "Accepted coupons": "Принятые талоны",
+    "Queue coupons": "Талоны в очереди",
+    "Acceptance of coupons": "Прием талонов",
+    "Call": "Вызов следующего талона",
+    "Terminate": "Завершить",
+    "Number of invited coupons": "Количество приглашенных талонов"
 }

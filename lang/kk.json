@@ -12,7 +12,14 @@
     "Updated At": "Өзгертілді",
     "Password": "Құпия сөз",
     "Abbreviation": "Аббревиатура",
-    "Assignment of Service to Operator": "Операторға қызметті тағайындау",
+    "Assignment of Service to Operator": "Техникалық хатшыға қызметті тағайындау",
     "Subject" : "Пән",
-    "Date": "Уақыты"
+    "Date": "Уақыты",
+    "Technical secretaries": "Техникалық хатшылар",
+    "Accepted coupons": "Қабылданған талондар",
+    "Queue coupons": "Кезектегі талондар",
+    "Acceptance of coupons": "Талондар қабылдау",
+    "Call": "Шақыру",
+    "Terminate": "Аяқтау",
+    "Number of invited coupons": "Шақырылған талондар саны"
 }
