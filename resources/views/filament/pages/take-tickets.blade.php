@@ -83,10 +83,11 @@
             }).listen('.ticketCreated',(event)=>{
                 if (allowIds.includes(event.ticket.service_id)){
                     Livewire.emit('recordUpdated');
-                }
-                if (list.childElementCount===0 && !btn.hasAttribute('disabled')){
-                    if (window.Notifi.permission === "granted") {
+                    
+                     if (list.childElementCount===0 && !btn.hasAttribute('disabled')){
+                        if (window.Notifi.permission === "granted") {
                          new window.Notifi("Электронды кезек",{ body:"Жаңа талон"});
+                       }
                     }
                 }
             });

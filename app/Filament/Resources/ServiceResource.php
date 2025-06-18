@@ -31,6 +31,7 @@ class ServiceResource extends Resource
                     ->label(__('Abbreviation'))
                     ->required()
                     ->unique(ignorable: fn ($record) => $record)
+                    ->regex('/^[a-zA-Z]+$/')
                     ->maxLength(10),
             ]);
     }

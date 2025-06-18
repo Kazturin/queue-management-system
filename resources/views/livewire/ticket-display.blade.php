@@ -4,7 +4,7 @@
 {{--            <button wire:click="requestPermission">Request Notification Permission</button>--}}
 {{--        </div>--}}
         <div
-           {{ $ticket->operator_id==null? 'wire:poll.5000ms.keep-alive':''}}
+           {{ $ticket && $ticket?->operator_id==null? 'wire:poll.5000ms.keep-alive':''}}
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
         >
             <div class="flex items-center my-4 border-b pb-4">
@@ -47,7 +47,7 @@
                 </div>
             @endif
             <div class="text-center">
-                {{ $ticket->created_at }}
+                {{ $ticket?->created_at }}
             </div>
         </div>
 

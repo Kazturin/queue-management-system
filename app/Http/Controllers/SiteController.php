@@ -21,7 +21,6 @@ use Ratchet\Server\EchoServer;
 class SiteController extends Controller
 {
     public function services(){
-
         $services = Service::all();
         return view('site.services',compact('services'));
     }
@@ -70,7 +69,6 @@ class SiteController extends Controller
     }
     private function getTicketNumber(Service $service){
         $ticket = \App\Models\Ticket::where('service_id',$service->id)->orderByDesc('id')->first();
-
         if ($ticket){
             $number = preg_replace('/[^0-9]/', '', $ticket->number);
             return $service->abbreviation.strval($number+1);
