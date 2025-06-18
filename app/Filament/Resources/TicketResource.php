@@ -77,7 +77,7 @@ class TicketResource extends Resource
             ->headerActions([
                 ExportAction::make()->exports([
                     ExcelExport::make()->fromTable()->withFilename(date('Y-m-d') . ' - tickets'),
-                ]),
+                ])->label('Excel'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

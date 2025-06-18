@@ -4946,16 +4946,16 @@
         },
         {
             "name": "pxlrbt/filament-excel",
-            "version": "v1.1.13",
+            "version": "v1.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pxlrbt/filament-excel.git",
-                "reference": "771952cfb26a79fc3da0cf78c916188ccf893dcd"
+                "reference": "af36f933b032aefccc87d17431b6e74673b04af5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pxlrbt/filament-excel/zipball/771952cfb26a79fc3da0cf78c916188ccf893dcd",
-                "reference": "771952cfb26a79fc3da0cf78c916188ccf893dcd",
+                "url": "https://api.github.com/repos/pxlrbt/filament-excel/zipball/af36f933b032aefccc87d17431b6e74673b04af5",
+                "reference": "af36f933b032aefccc87d17431b6e74673b04af5",
                 "shasum": ""
             },
             "require": {
@@ -5001,7 +5001,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pxlrbt/filament-excel/issues",
-                "source": "https://github.com/pxlrbt/filament-excel/tree/v1.1.13"
+                "source": "https://github.com/pxlrbt/filament-excel/tree/v1.1.14"
             },
             "funding": [
                 {
@@ -5009,7 +5009,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-05T19:06:22+00:00"
+            "time": "2024-09-13T08:35:57+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -12036,15 +12036,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.0.2"
     },
-    "platform-dev": [],
-    "platform-overrides": {
-        "php": "8.1"
-    },
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }

@@ -66,7 +66,9 @@ class UserResource extends Resource implements FilamentUser
                     ->label(__('Roles'))
                     ->columns(3)
                     ->relationship('roles','name', function ($query) {
-                        return $query->where('name', '!=','Admin');
+                        return  $query->when(!auth()->user()->hasRole('Admin'), function ($query) {
+                            $query->where('name', '!=', 'Admin');
+                        });
                     }),
 //                Forms\Components\Select::make('roles')
 //                ->multiple()
