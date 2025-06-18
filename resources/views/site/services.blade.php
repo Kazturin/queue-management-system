@@ -2,8 +2,8 @@
 @section('content')
     <div class="container m-auto h-full overflow-hidden">
         <div>
-            <div class="flex items-center justify-center my-8">
-                <img class="w-24 h-24 mr-4" src="{{ asset('img/logo.png') }}" alt="logo">
+            <div class="text-center my-8">
+                <img class="w-40 lg:w-56 mx-auto" src="{{ asset('logo.webp') }}" alt="logo">
                 <div class="">
                     <div class="text-gray-700 text-4xl font-semibold text-center">
                         Электронды кезек
@@ -17,7 +17,7 @@
                     <div class="flex justify-start flex-col border-2 border-primary-600 rounded-md">
                         <div class="p-4 bg-primary-600 text-white font-semibold text-lg uppercase"> {{$service->name}} </div>
                         <div class="mx-auto my-6">
-                            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->style('dot')->eye('circle')->merge('/public/img/logo.png')->size(200)->margin(1)->generate(route('ticket-create',$service))) !!} ">
+                            <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->style('dot')->eye('circle')->size(200)->margin(1)->generate(route('ticket-create',$service))) !!} ">
 {{--                            {!! QrCode::size(200)->generate(Request::url(route('ticket-create',$service))); !!}--}}
                         </div>
 {{--                        <a href="{{ route('ticket-create',['service'=>$service])}}" target="_blank">go</a>--}}

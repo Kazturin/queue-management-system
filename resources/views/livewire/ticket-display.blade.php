@@ -7,8 +7,8 @@
            {{ $ticket && $ticket?->operator_id==null? 'wire:poll.5000ms.keep-alive':''}}
             class="h-screen flex flex-col justify-center items-center {{ $ticket?->operator_id?'bg-green-200':'' }}"
         >
-            <div class="flex items-center my-4 border-b pb-4">
-                <img class="w-10 h-10 mr-4" src="{{ asset('img/logo.png') }}" alt="logo">
+            <div class="my-4 border-b pb-4">
+                <img class="w-40 mx-auto" src="/logo.webp" alt="logo">
                 <div class="text-gray-700 text-2xl text-center">
                     Электронды кезек
                 </div>
@@ -37,7 +37,7 @@
                     </form>
                     @else
                         <div wire:init="checkTicketStatus" class="text-green-500 text-xl text-center font-semibold">
-                            Сізді {{ $ticket->operator->number }} - үстелге шақырды
+                            Сізді № {{ $ticket->operator->number }} - үстелге шақырды
                         </div>
                     @endif
                 </div>

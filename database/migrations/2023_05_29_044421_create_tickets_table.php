@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('number',10);
-            $table->foreignIdFor(\App\Models\User::class,'operator_id')->nullable();
+            $table->foreignIdFor(\App\Models\User::class,'operator_id')->nullable()->onDelete('cascade');;
             $table->smallInteger('status');
-            $table->foreignIdFor(\App\Models\Service::class,'service_id');
+            $table->foreignIdFor(\App\Models\Service::class,'service_id')->onDelete('cascade');;
             $table->string('key',50);
             $table->timestamps();
         });

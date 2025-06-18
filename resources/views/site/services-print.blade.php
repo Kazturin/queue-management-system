@@ -14,7 +14,7 @@
 
                                 <div class="p-4 bg-primary-600 text-white font-semibold text-lg uppercase"> {{$service->name}} </div>
                                 <div class="mx-auto my-6 p-8">
-                                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->style('dot')->eye('circle')->merge('/public/img/logo.png')->size(400)->gradient(255, 0, 0, 0, 0, 255, 'diagonal')->margin(1)->generate(route('ticket-create',$service))) !!} ">
+                                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->style('dot')->eye('circle')->size(400)->gradient(255, 0, 0, 0, 0, 255, 'diagonal')->margin(1)->generate(route('ticket-create',$service))) !!} ">
                                 </div>
                                 {{--                            <a href="{{ route('ticket-create',$service) }}" target="_blank">Go</a>--}}
 

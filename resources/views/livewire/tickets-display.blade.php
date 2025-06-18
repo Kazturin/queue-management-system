@@ -7,12 +7,9 @@
     @endif
     <div class="grid grid-cols-2 h-full">
         <div class="flex flex-col">
-            <div class="flex justify-between items-center px-8 py-4">
-                <div class="flex align-center p-5">
-                    <img src="/img/logo.png" class="w-28" alt="logo">
-                </div>
-                <div class="text-2xl px-5">
-                    <img src="/img/logo-text.png" class="w-60" alt="logo-text">
+            <div class="px-8 py-4">
+                <div>
+                    <img src="/logo.webp" class="w-60 mx-auto" alt="logo-text">
                 </div>
             </div>
             <div class="flex flex-col flex-1 items-center justify-center text-gray-100 text-5xl uppercase">
